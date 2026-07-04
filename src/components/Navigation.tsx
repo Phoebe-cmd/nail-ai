@@ -62,7 +62,7 @@ export default function Navigation() {
       }}
     >
       <Link href="/" className="flex items-center gap-2 no-underline">
-        <img src="/nav-icon.png" alt="NailAI" style={{ height: '36px', width: 'auto' }} />
+        <img src="/nav-icon.png" alt="NailAI" style={{ height: '48px', width: 'auto' }} />
       </Link>
       <div className="flex gap-7 items-center">
         {NAV_ITEMS.map(item => {
