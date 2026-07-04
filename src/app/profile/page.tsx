@@ -28,7 +28,7 @@ interface AuthUser {
 
 export default function ProfilePage() {
   const router = useRouter();
-  const { designs } = useStore();
+  const { designs, removeDesign } = useStore();
   const [user, setUser] = useState<AuthUser | null>(null);
   const [myPosts, setMyPosts] = useState<CommunityPost[]>([]);
   const [favPosts, setFavPosts] = useState<CommunityPost[]>([]);
@@ -269,15 +269,29 @@ export default function ProfilePage() {
               favDesigns.length > 0 ? (
                 <div className="grid grid-cols-4 gap-4">
                   {favDesigns.map((design) => (
-                    <Link key={design.id} href={`/design/${design.id}`} onClick={() => setModal(null)}>
-                      <div className="rounded-xl overflow-hidden border transition-all hover:scale-105" style={{ borderColor: 'var(--border)', background: 'var(--bg-surface)' }}>
-                        <img src={design.nails[0]?.image || '/nail_1.jpg'} alt={design.name} className="w-full aspect-[3/4] object-cover" />
-                        <div className="p-2">
-                          <p className="text-xs font-medium truncate" style={{ color: 'var(--ink)' }}>{design.name}</p>
-                          <p className="text-[10px]" style={{ color: 'var(--accent-gold)' }}>{design.compatibilityScore}分</p>
+                    <div key={design.id} className="relative group">
+                      <Link href={`/design/${design.id}`} onClick={() => setModal(null)}>
+                        <div className="rounded-xl overflow-hidden border transition-all hover:scale-105" style={{ borderColor: 'var(--border)', background: 'var(--bg-surface)' }}>
+                          <img src={design.nails[0]?.image || '/nail_1.jpg'} alt={design.name} className="w-full aspect-[3/4] object-cover" />
+                          <div className="p-2">
+                            <p className="text-xs font-medium truncate" style={{ color: 'var(--ink)' }}>{design.name}</p>
+                            <p className="text-[10px]" style={{ color: 'var(--accent-gold)' }}>{design.compatibilityScore}分</p>
+                          </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
+                      <button
+                        className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-xs cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                        style={{ background: 'rgba(0,0,0,0.7)', color: '#e94560' }}
+                        title="删除该设计方案"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (confirm('确定删除这个设计方案吗？删除后无法恢复。')) {
+                            removeDesign(design.id);
+                          }
+                        }}
+                      >×</button>
+                    </div>
                   ))}
                 </div>
               ) : (
