@@ -219,7 +219,7 @@ export default function CommunityPage() {
       ) : (
         <div className="columns-3 gap-4">
           {posts.map((post) => (
-            <GlassCard key={post.id} className="mb-4 break-inside-avoid cursor-pointer" onClick={() => setSelectedPost(post)}>
+            <GlassCard key={post.id} className="post-card mb-4 break-inside-avoid cursor-pointer" onClick={() => setSelectedPost(post)}>
               <div className="rounded-lg overflow-hidden mb-3" style={{ background: 'var(--bg-surface)' }}>
                 <img src={post.images[0]} alt={post.title} className="w-full object-cover" style={{ aspectRatio: '3/4' }} />
               </div>
@@ -354,7 +354,7 @@ export default function CommunityPage() {
                   })}
               </div>
               <div className="flex gap-2">
-                <input type="text" placeholder={user ? '发表评论...' : '登录后评论'} value={commentText} onChange={(e) => setCommentText(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleComment()} className="flex-1 px-4 py-2 rounded-lg border text-sm outline-none" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} />
+                <input type="text" placeholder={user ? '发表评论...' : '登录后评论'} value={commentText} onChange={(e) => setCommentText(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleComment()} className="flex-1 px-4 py-2 rounded-lg border text-sm outline-none input-glow" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} />
                 <Button variant="gold" size="sm" onClick={() => handleComment()}>发送</Button>
               </div>
             </div>
@@ -367,8 +367,8 @@ export default function CommunityPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)' }} onClick={() => setShowCreateModal(false)}>
           <GlassCard className="max-w-lg w-full" style={{ animation: 'fade-in-up 0.3s ease-out' }} onClick={(e) => e?.stopPropagation()}>
             <h2 className="text-xl font-bold mb-6" style={{ color: 'var(--ink)' }}>发布新灵感</h2>
-            <div className="mb-4"><label className="text-xs font-medium mb-1 block" style={{ color: 'var(--ink-muted)' }}>标题</label><input type="text" placeholder="为你的灵感命名..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} /></div>
-            <div className="mb-4"><label className="text-xs font-medium mb-1 block" style={{ color: 'var(--ink-muted)' }}>描述</label><textarea placeholder="分享你的设计灵感和故事..." value={newDesc} onChange={(e) => setNewDesc(e.target.value)} rows={3} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none resize-none" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} /></div>
+            <div className="mb-4"><label className="text-xs font-medium mb-1 block" style={{ color: 'var(--ink-muted)' }}>标题</label><input type="text" placeholder="为你的灵感命名..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} /></div>
+            <div className="mb-4"><label className="text-xs font-medium mb-1 block" style={{ color: 'var(--ink-muted)' }}>描述</label><textarea placeholder="分享你的设计灵感和故事..." value={newDesc} onChange={(e) => setNewDesc(e.target.value)} rows={3} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow resize-none" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} /></div>
             <div className="mb-4"><label className="text-xs font-medium mb-1 block" style={{ color: 'var(--ink-muted)' }}>标签</label><div className="flex flex-wrap gap-2">{CATEGORIES.filter((c) => c !== '全部').map((cat) => (<Tag key={cat} active={newTags.includes(cat)} onClick={() => { setNewTags(newTags.includes(cat) ? newTags.filter((t) => t !== cat) : [...newTags, cat]); }} size="sm">{cat}</Tag>))}</div></div>
             <div className="mb-6">
               <label className="text-xs font-medium mb-1 block" style={{ color: 'var(--ink-muted)' }}>图片上传</label>

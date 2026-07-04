@@ -94,3 +94,65 @@ body::before {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
+
+/* ========== 交互打磨：克制优雅的光感与高亮 ========== */
+/* 卡片悬停：金边微亮 + 轻微上浮 + 柔光 */
+.glass-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.glass-hover:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-gold);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.35), 0 0 16px rgba(201,168,76,0.10);
+}
+
+/* 输入框聚焦：金色边框柔光（替代生硬 outline） */
+.input-glow {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.input-glow:focus {
+  outline: none;
+  border-color: rgba(201,168,76,0.55);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.10), 0 0 14px rgba(201,168,76,0.08);
+}
+
+/* 标签/选项框：悬停轻微缩放，选中金色高亮 */
+.tag-glow {
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.tag-glow:hover {
+  transform: scale(1.05);
+  border-color: rgba(201,168,76,0.45);
+  color: var(--accent-gold);
+}
+.tag-glow:active {
+  transform: scale(0.97);
+}
+
+/* 按钮：悬停柔光、按下回弹 */
+.btn-glow {
+  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+.btn-glow:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 0 18px rgba(201,168,76,0.22);
+}
+.btn-glow:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* 帖子卡片：悬停上浮 + 金边 + 柔光 */
+.post-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.post-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-gold);
+  box-shadow: 0 8px 36px rgba(0,0,0,0.4), 0 0 18px rgba(201,168,76,0.12);
+}
+
+/* 通用：点击瞬间的轻微高亮反馈 */
+.tap-highlight:active {
+  filter: brightness(1.12);
+}

@@ -52,7 +52,7 @@ export default function RegisterPage() {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none"
+              className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow"
               style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
               placeholder="你想被怎么称呼"
             />
@@ -64,7 +64,7 @@ export default function RegisterPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none"
+              className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow"
               style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
               placeholder="you@example.com"
             />
@@ -76,7 +76,7 @@ export default function RegisterPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none"
+              className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow"
               style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
               placeholder="至少 6 位"
             />

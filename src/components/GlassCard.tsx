@@ -12,7 +12,7 @@ interface GlassCardProps {
 export default function GlassCard({ children, className = '', style, onClick }: GlassCardProps) {
   return (
     <div
-      className={`rounded-xl border p-5 backdrop-blur-md transition-all ${onClick ? 'cursor-pointer hover:scale-[1.01]' : ''} ${className}`}
+      className={`rounded-xl border p-5 backdrop-blur-md glass-hover ${onClick ? 'cursor-pointer hover:scale-[1.01]' : ''} ${className}`}
       style={{
         background: 'var(--bg-card)',
         borderColor: 'var(--border)',

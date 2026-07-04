@@ -262,7 +262,7 @@ export default function DesignPage() {
       {/* ═══ 模式 Tab（每系列各自） ═══ */}
       <div className="flex gap-2 mb-4">
         <button
-          className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
+          className="btn-glow px-5 py-2 rounded-lg text-sm font-medium"
           style={activeSeries.mode === 'guided'
             ? { background: 'var(--accent-gold)', color: '#0a0a0f' }
             : { background: 'var(--bg-surface)', color: 'var(--ink-secondary)', border: '1px solid var(--border)' }}
@@ -271,7 +271,7 @@ export default function DesignPage() {
           引导模式
         </button>
         <button
-          className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
+          className="btn-glow px-5 py-2 rounded-lg text-sm font-medium"
           style={activeSeries.mode === 'free'
             ? { background: 'var(--accent-gold)', color: '#0a0a0f' }
             : { background: 'var(--bg-surface)', color: 'var(--ink-secondary)', border: '1px solid var(--border)' }}
@@ -293,7 +293,7 @@ export default function DesignPage() {
             }}
           >
             <button
-              className="px-3 py-1.5 text-sm"
+              className="px-3 py-1.5 text-sm tap-highlight"
               style={{ color: activeSeriesId === s.id ? 'var(--accent-gold)' : 'var(--ink-secondary)' }}
               onClick={() => setActiveSeriesId(s.id)}
             >
@@ -399,7 +399,7 @@ export default function DesignPage() {
                 type="text"
                 value={activeSeries.name}
                 onChange={(e) => renameSeries(activeSeries.id, e.target.value)}
-                className="flex-1 px-3 py-1.5 rounded-lg border text-sm outline-none"
+                className="flex-1 px-3 py-1.5 rounded-lg border text-sm outline-none input-glow"
                 style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
               />
             </div>
@@ -434,14 +434,14 @@ export default function DesignPage() {
                     <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--accent-gold)', color: '#0a0a0f' }}>2</span>
                     <h3 className="font-bold" style={{ color: 'var(--ink)' }}>角色/元素</h3>
                   </div>
-                  <input type="text" placeholder="如：骷髅头、初音未来..." value={activeSeries.characters} onChange={(e) => updateActive('characters', e.target.value)} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} />
+                  <input type="text" placeholder="如：骷髅头、初音未来..." value={activeSeries.characters} onChange={(e) => updateActive('characters', e.target.value)} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} />
                 </GlassCard>
                 <GlassCard>
                   <div className="flex items-center gap-2 mb-4">
                     <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--accent-gold)', color: '#0a0a0f' }}>3</span>
                     <h3 className="font-bold" style={{ color: 'var(--ink)' }}>标志性符号</h3>
                   </div>
-                  <input type="text" placeholder="如：闪电、樱花、十字架..." value={activeSeries.signatureSymbol} onChange={(e) => updateActive('signatureSymbol', e.target.value)} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} />
+                  <input type="text" placeholder="如：闪电、樱花、十字架..." value={activeSeries.signatureSymbol} onChange={(e) => updateActive('signatureSymbol', e.target.value)} className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow" style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }} />
                 </GlassCard>
               </div>
 
@@ -496,7 +496,7 @@ export default function DesignPage() {
                   onChange={(e) => updateActive('promptText', e.target.value)}
                   rows={12}
                   placeholder={FREE_PROMPT_TEMPLATE}
-                  className="w-full px-4 py-3 rounded-lg border text-sm outline-none resize-y leading-relaxed"
+                  className="w-full px-4 py-3 rounded-lg border text-sm outline-none input-glow resize-y leading-relaxed"
                   style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)', fontFamily: 'inherit' }}
                 />
                 <p className="text-xs mt-2" style={{ color: 'var(--ink-muted)' }}>模板已预填，直接在上面修改/删除/编写即可。</p>

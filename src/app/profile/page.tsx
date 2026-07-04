@@ -394,7 +394,7 @@ export default function ProfilePage() {
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
                 maxLength={30}
-                className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none"
+                className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow"
                 style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
                 placeholder="你想被怎么称呼"
               />
@@ -408,7 +408,7 @@ export default function ProfilePage() {
                 onChange={(e) => setEditBio(e.target.value)}
                 maxLength={200}
                 rows={3}
-                className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none resize-none"
+                className="w-full px-4 py-2.5 rounded-lg border text-sm outline-none input-glow resize-none"
                 style={{ background: 'var(--bg-surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
                 placeholder="一句话介绍自己..."
               />
