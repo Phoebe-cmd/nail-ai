@@ -42,16 +42,17 @@ export default function RootLayout({
         >
           {children}
         </main>
-        <Script
-          src="/libs/unicornStudio.umd.js"
-          strategy="afterInteractive"
-          id="unicorn-sdk"
-          onLoad="try { if (window.UnicornStudio && !window.UnicornStudio.isInitialized) { window.UnicornStudio.init(); } } catch(e) {}"
-        />
-        {/* 如果 SDK 已加载但未初始化，定时重试 */}
         <Script id="unicorn-init-poll" strategy="afterInteractive">
           {`
             (function() {
+              // 动态加载 UnicornStudio SDK
+              if (!document.getElementById('us-sdk')) {
+                var s = document.createElement('script');
+                s.id = 'us-sdk';
+                s.src = '/libs/unicornStudio.umd.js';
+                document.head.appendChild(s);
+              }
+              // 轮询初始化
               var tries = 0;
               var poll = setInterval(function() {
                 tries++;
