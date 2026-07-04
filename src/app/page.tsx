@@ -247,11 +247,12 @@ function FilmStripRow({ cards, reverse = false }: { cards: FilmCard[]; reverse?:
 
 /* ─── 平台介绍：打印机效果 ─── */
 const INTRO_LINES = [
-  '指尖，是离心脏最近的艺术画布。',
-  '上传你的灵感碎片——专辑封面、动漫截图、偶像舞台——',
-  'AI 将为你打造独一无二的痛甲设计。',
-  '先在自己的手上预览效果，再决定是否将它变为现实。',
-  '每一枚指甲，都是一次对热爱的告白。',
+  '缪斯女神，是灵感的化身。',
+  '你热爱的每一个瞬间——追的星、追的番、追的梦——',
+  '都是她的低语。',
+  '上传你的灵感碎片，Muse 会把它画在你的指尖。',
+  '先预览效果，再决定是否成真。',
+  '你的指尖，是缪斯的杰作。',
 ];
 
 function TypewriterIntro() {
@@ -332,7 +333,7 @@ function TypewriterIntro() {
           fontSize: '17px',
           color: 'var(--ink-secondary)',
           margin: 0,
-          minHeight: '9em',
+          minHeight: '11em',
           textShadow: '0 1px 10px rgba(0,0,0,0.4)',
         }}
       >

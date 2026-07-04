@@ -207,6 +207,22 @@ export default function CommunityPage() {
     setShowCreateModal(true);
   };
 
+  // 删除帖子（仅作者）
+  const handleDeletePost = async (postId: string) => {
+    if (!confirm('确定删除这条灵感吗？删除后无法恢复。')) return;
+    try {
+      const res = await fetch(`/api/posts/${postId}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || '删除失败');
+      }
+      setPosts((prev) => prev.filter((p) => p.id !== postId));
+      setSelectedPost(null);
+    } catch (err: any) {
+      alert(err.message || '删除失败');
+    }
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-10 py-8">
       <SectionTitle>灵感社区</SectionTitle>
@@ -317,7 +333,16 @@ export default function CommunityPage() {
                 </>
               )}
             </div>
-            <h2 className="text-xl font-bold mb-2" style={{ color: 'var(--ink)' }}>{selectedPost.title}</h2>
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <h2 className="text-xl font-bold" style={{ color: 'var(--ink)' }}>{selectedPost.title}</h2>
+              {selectedPost.isOwn && (
+                <button
+                  className="text-xs px-3 py-1.5 rounded-lg cursor-pointer transition-all flex-shrink-0"
+                  style={{ background: 'rgba(233,69,96,0.1)', color: '#e94560', border: '1px solid rgba(233,69,96,0.3)' }}
+                  onClick={() => handleDeletePost(selectedPost.id)}
+                >删除</button>
+              )}
+            </div>
             <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0" style={{ background: 'var(--bg-surface)', color: 'var(--accent-gold)' }}>
                 {selectedPost.authorAvatar && selectedPost.authorAvatar.startsWith('http')
