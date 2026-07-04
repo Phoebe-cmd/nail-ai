@@ -49,7 +49,9 @@ export interface CommunityPost {
   description: string;
   tags: string[];
   likes: number;
-  liked: boolean;
+  liked: boolean;          // 当前登录用户是否已点赞
+  favorited?: boolean;     // 当前登录用户是否已收藏
+  isOwn?: boolean;         // 是否是当前登录用户自己的帖子
   comments: Comment[];
   createdAt: string;
   designId?: string;
@@ -69,6 +71,7 @@ export interface Comment {
 // 用户
 export interface User {
   id: string;
+  email?: string;          // 社交账号登录后才有
   name: string;
   avatar: string;
   designs: string[];
